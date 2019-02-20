@@ -31,7 +31,7 @@ export default class Hello extends Vue {
     // console.log(newValue, oldValue);
   }
 
-  get computedTest() {
+  get computedTest(): string {
     return this.propA + '666';
   }
 

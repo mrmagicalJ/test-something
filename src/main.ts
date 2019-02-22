@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import createRouter from './router';
 import store from './store';
+import './style/animation.scss';
 
 Vue.config.productionTip = false;
 

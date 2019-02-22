@@ -2,6 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld :propA="msg" propC="Welcome to Your Vue.js + TypeScript App"/>
+    <!-- <router-view /> -->
+    <!-- 命名路由 -->
+    <!-- <router-view name="a" /> -->
   </div>
 </template>
 

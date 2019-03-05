@@ -6,6 +6,7 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import MvvmObj from '../mvvm-test';
 
 @Component
 export default class About extends Vue {
@@ -23,7 +24,7 @@ export default class About extends Vue {
     更新完powershell后需要安装psget，这个是PowerShell搜索安装模块的工具，下载步骤如下
     1.打开powershell，输入如下命令 Set-ExecutionPolicy RemoteSigned
     2.直接执行安装代码，(new-object Net.WebClient).DownloadString("http://psget.net/GetPsGet.ps1") | iex
-  
+    ----
     https://github.com/PowerShell/PowerShell
 
     windows系统限制，最高可以升到4.0，下载4.0版本，
@@ -31,7 +32,8 @@ export default class About extends Vue {
     点击下载，选择下载Windows6.1-KB2819745-x64-MultiPkg.msu
 
     https://github.com/JanDeDobbeleer/oh-my-posh
-    iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/pecigonzalo/Oh-My-Posh/master/install.ps1'))
+    iex ((new-object net.webclient).DownloadString(
+    'https://raw.githubusercontent.com/pecigonzalo/Oh-My-Posh/master/install.ps1'))
 
     https://www.microsoft.com/en-us/download/details.aspx?id=51451
     下载了PackageManagement_x64.msi
@@ -55,11 +57,6 @@ export default class About extends Vue {
     这跟目标还差一步就是设置主题Set-Theme Agnoster
     字体，选择powerline，https://github.com/powerline/fonts
 
-    poweshell6
-    C:\Program Files\PowerShell\6\pwsh.exe
-    powershell4,自带
-    C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
-
     Install-Module oh-my-posh -Scope CurrentUser
 
     下载之后有的字体显示不出来，我以前用过连体字在这个电脑并没有配置。
@@ -81,8 +78,32 @@ export default class About extends Vue {
 
     安装和配置wmf5.1
     https://docs.microsoft.com/zh-cn/powershell/wmf/5.1/install-configure
+  `;
 
-  `
+  /**
+   * mounted
+   */
+  public mounted() {
+    function callback(newValue: any, oldValue: any) {
+      console.log(newValue, oldValue);
+    }
+    const data = {
+      a: 200,
+      level1: {
+        b: 'str',
+        c: [1, 2, 3],
+        level2: {
+          d: 90,
+        },
+      },
+    };
+    const mv: MvvmObj = new MvvmObj(data, callback);
+
+    data.a = 300;
+    data.level1.b = 'sssss';
+    data.level1.level2.d = 888;
+    data.level1.c.push(4);
+  }
 }
 </script>
 

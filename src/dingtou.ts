@@ -5,7 +5,7 @@ class Wealth {
   // 存量资金
   stockMoney: number = 4000;
   // 消费比例
-  spendPercent: number = 0.2;
+  spendPercent: number = 0.4;
   // 投资比例
   investmentPercentMap: Map<number, number> = new Map([
     [100000, 0.85],
@@ -82,10 +82,19 @@ class Wealth {
    * 打印当前信息
    */
   printInfo() {
+    const balance: number = this.getBalance();
+    const investmentPercent: number = this.getInvestmentPercent();
+
+    const spend: number = Math.round(balance *　this.spendPercent);
+    const investment: number = balance - spend;
+    const fixedInvestment: number = Math.round(investment * investmentPercent);
+
     const info: string = `
-      当月结余：${this.getBalance()},
-      投资系数：${this.getInvestmentPercent()},
-    `;
+      当月结余：${balance},
+      当月可用消费总额：${spend},
+      投资系数：${investmentPercent},
+      投资货基金额：${((investment * 1000) - (fixedInvestment * 1000)) / 1000},
+      可用定投金额：${fixedInvestment}`;
     console.log(info);
   }
 }

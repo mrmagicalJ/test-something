@@ -10,9 +10,9 @@ import MvvmObj from '../mvvm-test';
 
 @Component
 export default class About extends Vue {
-  @Prop(String) private id!: string;
+  @Prop(String) id!: string;
 
-  private sss: string = `
+  sss: string = `
     想要在vscode里面显示我的git信息，git-bash就可以显示，但是觉得不够美观，
     在学习vscode的功能时，看到别人的集成终端是这样的，心向往之，决定也要搞一个，记录一下历程
 
@@ -83,7 +83,7 @@ export default class About extends Vue {
   /**
    * mounted
    */
-  public mounted() {
+  mounted() {
     function callback(newValue: any, oldValue: any) {
       console.log(newValue, oldValue);
     }

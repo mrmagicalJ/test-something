@@ -72,7 +72,7 @@ class MvvmObj {
         writable: true,
         enumerable: false,
         configurable: true,
-      })
+      });
 
       // 最后 让该数组实例的 __proto__ 属性指向 假的原型 overrideProto
       arr.__proto__ = overrideProto;

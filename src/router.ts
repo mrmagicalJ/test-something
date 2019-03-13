@@ -1,10 +1,7 @@
-import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 
-Vue.use(Router);
-
-export default  () => {
+export default () => {
   return new Router({
     routes: [
       {
@@ -15,6 +12,10 @@ export default  () => {
           title: 'this is meta title',
           description: 'this is meta des',
         },
+        // beforeEnter(to, from, next) {
+        //   console.log('app router beforeEnter');
+        //   next();
+        // },
         // children: [
         //   {
         //     path: 'child',
